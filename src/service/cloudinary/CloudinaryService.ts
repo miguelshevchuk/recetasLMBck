@@ -1,11 +1,10 @@
 import { v2 } from 'cloudinary'
 import { executeConfig as configCloudinary } from '../../config/cloudinary'
 import { CloudinaryError } from '../../error/reel/CloudinaryError'
-import { Reel } from '../../model/Models'
 
 export class CloudinaryService {
 
-  private baseFile = "reels/"
+  private baseFile = "recetas/"
 
   constructor() {
     this.config()
@@ -15,13 +14,13 @@ export class CloudinaryService {
     configCloudinary()
   }
 
-  public async uploadReel(reel: Reel): Promise<string> {
+  public async uploadReel(imagen: string): Promise<string> {
 
 //deprecated
 
     try {
       const reelUpload = await v2.uploader.upload(this.baseFile+"images.png", {
-        folder: "reel.ubicacion",
+        folder: "imagen",
         unique_filename: true,
         use_filename: true,
         access_mode: 'public',

@@ -1,1 +1,6 @@
 export {Usuario} from './usuario/Usuario'
+export {Receta} from './recetas/Receta'
+export {Categoria} from './recetas/Categoria'
+export {Paso} from './recetas/Paso'
+export {Calificacion} from './recetas/Calificacion'
+export {Ingrediente} from './recetas/Ingrediente'

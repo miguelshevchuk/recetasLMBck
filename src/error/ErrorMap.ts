@@ -20,5 +20,6 @@ export const ErrorMap: MapError = {
     USUARIO_INEXISTENTE: new ErrorType("Usuario Invalido", 401),
     USUARIO_EXISTENTE: new ErrorType("El email ya se encuentra en uso", 400),
     CLOUDINARY_ERROR: new ErrorType("Ocurrio un error al procesar el reel", 500),
+    NO_EXISTEN_RECETAS: new ErrorType("No existen recetas para la consulta realizada"),
     
 }
