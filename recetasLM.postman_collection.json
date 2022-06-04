@@ -2,7 +2,8 @@
 	"info": {
 		"_postman_id": "4acba1f1-3597-422b-b752-94d49ef13f94",
 		"name": "recetasLM",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6902289"
 	},
 	"item": [
 		{
@@ -82,6 +83,63 @@
 			"response": []
 		},
 		{
+			"name": "receta",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvSWQiOjEsImlhdCI6MTYzOTIzMjg0MywiZXhwIjoxNjM5MzE5MjQzfQ.X9wHmDbRJ85KbKe3CVE1OfWZz_XUU1sza9ngVmXKkoU",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "{{URL}}/receta/1",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"receta",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "receta",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvSWQiOjEsImlhdCI6MTYzOTIzMjg0MywiZXhwIjoxNjM5MzE5MjQzfQ.X9wHmDbRJ85KbKe3CVE1OfWZz_XUU1sza9ngVmXKkoU",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"recetaId\": 1,\r\n        \"nombre\": \"Pollo Frito\",\r\n        \"descripcion\": \"Pollo rico rico\",\r\n        \"dificultad\": 1,\r\n        \"categoria\": 1,\r\n        \"ingredientes\": [\"1 papa\", \"3 Cebollas\"],\r\n        \"pasos\": [\r\n            {\r\n                \"pasoNro\": 1,\r\n                \"paso\": \"Pelar el pollo\"\r\n            },\r\n            {\r\n                \"pasoNro\": 2,\r\n                \"paso\": \"Ponerlo en el horno\"\r\n            }\r\n        ]\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/receta",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"receta"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "recetas",
 			"request": {
 				"method": "GET",
@@ -94,13 +152,12 @@
 					}
 				],
 				"url": {
-					"raw": "{{URL}}/recetas/",
+					"raw": "{{URL}}/recetas",
 					"host": [
 						"{{URL}}"
 					],
 					"path": [
-						"recetas",
-						""
+						"recetas"
 					]
 				}
 			},
