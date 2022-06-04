@@ -15,7 +15,7 @@ class RecetaMapper{
 
     public mapReceta : (receta:IUpdateReceta) => Receta = function(receta){
 
-        return Object.assign(new Receta(), objectMapper(receta, this.defReceta));
+        return Object.assign(new Receta(receta.recetaId), objectMapper(receta, this.defReceta));
 
     }
 

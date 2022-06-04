@@ -30,10 +30,10 @@ export class Paso {
     @JoinColumn({name: 'receta_id'})
     receta: Receta;
 
-    constructor(pasoNro, paso, receta:Receta){
+    constructor(pasoNro, paso, recetaId:number){
         this.pasoNro = pasoNro
         this.paso = paso
-        this.receta = receta
+        this.receta = new Receta(recetaId)
     }
  
 }

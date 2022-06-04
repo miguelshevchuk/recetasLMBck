@@ -25,9 +25,9 @@ export class Ingrediente {
     @JoinColumn({name: 'receta_id'})
     receta: Receta;
 
-    constructor(ingrediente:string, receta:Receta){
+    constructor(ingrediente:string, recetaId:number){
         this.ingrediente = ingrediente
-        this.receta = receta
+        this.receta = new Receta(recetaId)
     }
  
 }

@@ -42,6 +42,11 @@ export class Receta {
     })
     imagen!: string
 
+    @Column({
+        name: 'estado'
+    })
+    estado!: string
+
     @ManyToOne(() => Usuario)
     @JoinColumn({name: 'usuario_id'})
     usuario: Usuario;
@@ -58,6 +63,10 @@ export class Receta {
 
     @OneToMany(() => Calificacion, cal => cal.receta)
     calificaciones!: Calificacion[];  
+
+    constructor(recetaId:number){
+        this.recetaId = recetaId
+    }
    
  
 }

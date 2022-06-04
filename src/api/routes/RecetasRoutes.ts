@@ -12,7 +12,7 @@ class RecetasRoutes {
 
     config(): void {
         this.router.get('/', recetasController.getAll);
-        this.router.get('/me', authenticated, recetasController.getMyRecipes);
+       
     }
 
 }
