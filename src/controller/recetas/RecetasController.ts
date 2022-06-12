@@ -37,7 +37,8 @@ class RecetasController implements ICRUDController{
 
     public async create(req: express.Request, res: express.Response, next: express.NextFunction){
         try {
-            // await usuarioService.create(req.body);
+            const userId = (req as any).user.usuarioId
+            await recetaService.create(req.body, userId);
             return res.status(201).send()   
         } catch (e) {
           next(e)

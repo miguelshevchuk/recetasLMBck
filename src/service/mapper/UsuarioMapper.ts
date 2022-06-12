@@ -13,7 +13,7 @@ class UsuarioMapper{
 
     public mapNuevoUsuario : (nuevoUsuario:INuevoUsuario) => Usuario = function(nuevoUsuario){
 
-        return Object.assign(new Usuario(), objectMapper(nuevoUsuario, this.defNuevoUsuarioMapper));
+        return Object.assign(new Usuario(null), objectMapper(nuevoUsuario, this.defNuevoUsuarioMapper));
 
     }
 

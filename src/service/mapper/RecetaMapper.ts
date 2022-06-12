@@ -1,21 +1,27 @@
+import { INuevaReceta } from "../../interfaces/recetas/INuevaReceta";
 import { IUpdateReceta } from "../../interfaces/recetas/IUpdateReceta";
-import { Receta} from "../../model/Models";
+import { Receta, Usuario} from "../../model/Models";
 
 var objectMapper = require('object-mapper');
 
 class RecetaMapper{
 
     private defReceta = {
-        "recetaId": "recetaId",
         "nombre": "nombre",
         "descripcion": "descripcion",
         "dificultad": "dificultad",
         "categoria": "categoria"
       };
 
-    public mapReceta : (receta:IUpdateReceta) => Receta = function(receta){
 
-        return Object.assign(new Receta(receta.recetaId), objectMapper(receta, this.defReceta));
+    public mapNuevaReceta : (receta:INuevaReceta, userId:number, urlImagen:string) => Receta = function(receta, userId:number, urlImagen:string){
+
+        let nuevaReceta:Receta = Object.assign(new Receta(null), objectMapper(receta, this.defReceta));
+
+        nuevaReceta.usuario = new Usuario(userId)
+        nuevaReceta.imagen = urlImagen
+
+        return nuevaReceta
 
     }
 

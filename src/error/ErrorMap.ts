@@ -24,5 +24,6 @@ export const ErrorMap: MapError = {
     NO_EXISTEN_RECETAS: new ErrorType("No existen recetas para la consulta realizada"),
     PARAMETRO_PASOS_VACIO: new ErrorType("Debe agregar al menos un paso"),
     PARAMETRO_INGREDIENTES_VACIO: new ErrorType("Debe agregar al menos un ingrediente"),
+    SIN_CALIFICAR: new ErrorType("No se Califico la receta seleccionada"),
     
 }

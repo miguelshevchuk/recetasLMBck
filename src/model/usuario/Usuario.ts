@@ -31,6 +31,10 @@ export class Usuario {
         name: 'nombre_apellido'
     })
     nombreApellido!: string
+
+    constructor(usuarioId:number){
+        this.usuarioId = usuarioId
+    }
    
  
 }

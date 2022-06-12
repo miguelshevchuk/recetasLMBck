@@ -1,12 +1,15 @@
 
+import { url } from 'inspector';
 import { getRepository } from 'typeorm'
 import { RecetaDTO } from '../../dto/recetas/RecetaDTO';
 import { ErrorMap } from '../../error/ErrorMap';
 import { NoExistenRecetasException } from '../../error/recetas/NoExistenRecetasException';
 import { ParametrosRecetaInvalidos } from '../../error/recetas/ParametrosRecetaInvalidos';
 import { RecetaNoPropiaException } from '../../error/recetas/RecetaNoPropiaException';
+import { INuevaReceta } from '../../interfaces/recetas/INuevaReceta';
 import { IUpdateReceta } from '../../interfaces/recetas/IUpdateReceta';
 import { Ingrediente, Paso, Receta} from '../../model/Models';
+import cloudinaryService, { CloudinaryService } from '../cloudinary/CloudinaryService';
 import recetaMapper from '../mapper/RecetaMapper';
 
 class RecetaService{
@@ -28,25 +31,6 @@ class RecetaService{
 
         return recetas.map(r => new RecetaDTO(r))
     }
-
-    // public async getMyRecipes(usuarioId:number){
-    //     let recetasRepository = getRepository(Receta);
-    //     const recetas = await recetasRepository.createQueryBuilder('r')
-    //         .innerJoinAndSelect('r.usuario', 'u')
-    //         .leftJoinAndSelect('r.ingredientes', 'i')
-    //         .leftJoinAndSelect('r.calificaciones', 'ca')
-    //         .leftJoinAndSelect('r.pasos', 'p')
-    //         .innerJoinAndSelect('r.categoria', 'c')
-    //         .where("u.usuarioId = :usuarioId", {usuarioId: usuarioId})
-    //         .andWhere("r.estado = :estadoAlta", {estadoAlta : "ALTA"})
-    //         .getMany()
-
-    //     if (!recetas) {
-    //         throw new NoExistenRecetasException()
-    //     }
-
-    //     return recetas.map(r => new RecetaDTO(r))
-    // }
 
     public async getRecetaBy(recetaId:number){
         let recetasRepository = getRepository(Receta);
@@ -89,16 +73,16 @@ class RecetaService{
             throw new RecetaNoPropiaException()
         }
         
-        recetasRepository.update({recetaId: receta.recetaId}, {
+        await recetasRepository.update({recetaId: receta.recetaId}, {
             nombre : receta.nombre,
             descripcion : receta.descripcion,
             dificultad : receta.dificultad,
             categoria: {categoriaId: receta.categoria}
         })
 
-        this.guardarIngredientes(receta, recetaBD);
+        this.guardarIngredientes(receta.ingredientes, recetaBD);
 
-        this.guardarPasos(receta, recetaBD);
+        this.guardarPasos(receta.pasos, recetaBD);
        
 
 
@@ -130,24 +114,38 @@ class RecetaService{
     }
 
 
-    private guardarPasos(receta: IUpdateReceta, recetaBD: Receta) {
+    private guardarPasos(pasos: {pasoNro, paso}[], recetaBD: Receta) {
         let pasosRepository = getRepository(Paso);
-        pasosRepository.delete({ receta: { recetaId: receta.recetaId } });
+        pasosRepository.delete({ receta: { recetaId: recetaBD.recetaId } });
 
-        for (let i = 0; i < receta.pasos.length; i++) {
-            let paso = new Paso(receta.pasos[i].pasoNro, receta.pasos[i].paso, recetaBD.recetaId);
+        for (let i = 0; i < pasos.length; i++) {
+            let paso = new Paso(pasos[i].pasoNro, pasos[i].paso, recetaBD.recetaId);
             pasosRepository.save(paso);
         }
     }
 
-    private guardarIngredientes(receta: IUpdateReceta, recetaBD: Receta) {
+    private guardarIngredientes(ingredientes: string[], recetaBD: Receta) {
         let ingredientesRepository = getRepository(Ingrediente);
-        ingredientesRepository.delete({ receta: { recetaId: receta.recetaId } });
+        ingredientesRepository.delete({ receta: { recetaId: recetaBD.recetaId } });
 
-        for (let i = 0; i < receta.ingredientes.length; i++) {
-            let ingrediente = new Ingrediente(receta.ingredientes[i], recetaBD.recetaId);
+        for (let i = 0; i < ingredientes.length; i++) {
+            let ingrediente = new Ingrediente(ingredientes[i], recetaBD.recetaId);
             ingredientesRepository.save(ingrediente);
         }
+    }
+
+    public async create(nuevaReceta:INuevaReceta, userId:number){
+        let recetaRepository = getRepository(Receta);
+
+        let urlImagen = await cloudinaryService.uploadImage(nuevaReceta.imagen)
+
+        let receta = recetaMapper.mapNuevaReceta(nuevaReceta, userId, urlImagen);
+
+       receta = await recetaRepository.save(receta);
+
+       this.guardarIngredientes(nuevaReceta.ingredientes, receta);
+       this.guardarPasos(nuevaReceta.pasos, receta);
+
     }
 }
 

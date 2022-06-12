@@ -66,7 +66,6 @@ export class Receta {
 
     constructor(recetaId:number){
         this.recetaId = recetaId
-    }
-   
+    }   
  
 }
