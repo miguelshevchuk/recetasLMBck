@@ -28,5 +28,11 @@ export class Calificacion {
     @ManyToOne(() => Receta)
     @JoinColumn({name: 'receta_id'})
     receta: Receta;   
+
+    constructor(userId:number, recetaId:number, calificacion:number){
+        this.usuario = new Usuario(userId)
+        this.receta = new Receta(recetaId)
+        this.calificacion = calificacion
+    }
  
 }

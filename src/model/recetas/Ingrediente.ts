@@ -24,5 +24,10 @@ export class Ingrediente {
     @ManyToOne(() => Receta)
     @JoinColumn({name: 'receta_id'})
     receta: Receta;
+
+    constructor(ingrediente:string, recetaId:number){
+        this.ingrediente = ingrediente
+        this.receta = new Receta(recetaId)
+    }
  
 }

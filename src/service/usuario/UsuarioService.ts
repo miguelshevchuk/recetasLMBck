@@ -6,6 +6,8 @@ import { INuevoUsuario } from '../../interfaces/usuario/INuevoUsuario';
 import usuarioMapper from '../mapper/UsuarioMapper';
 import { Usuario} from '../../model/Models';
 import { UsuarioDTO } from '../../dto/usuario/UsuarioDTO';
+import { ICambiarPass } from '../../interfaces/usuario/ICambiarPass';
+import { CredencialesInvalidasError } from '../../error/auth/CredencialesInvalidasError';
 
 class UsuarioService{
  
@@ -39,6 +41,18 @@ class UsuarioService{
         let usuario = await this.getUsuarioBy(userId)
 
         return new UsuarioDTO(usuario)
+    }
+
+    public async cambiarPass(cambiarPass:ICambiarPass, userId:number){
+
+        let usuarioRepository = getRepository(Usuario);
+        const usuario= await usuarioRepository.findOne({usuarioId: userId, password: cambiarPass.oldPassword});
+
+        if (!usuario) {
+            throw new CredencialesInvalidasError()
+        }
+
+        await usuarioRepository.update({usuarioId: userId}, {password: cambiarPass.newPassword})
     }
 
 

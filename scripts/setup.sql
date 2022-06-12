@@ -12,5 +12,5 @@ values (6, 'Pescado');
 insert into public."CATEGORIAS" (categoria_id, categoria)
 values (2, 'Pollo');
 
-insert into public."RECETAS" (descripcion, dificultad, imagen, nombre, usuario_id, categoria_id)
-values ('Pollo rico rico', 1, 'una url', 'Pollo Frito', 1, 1);
+insert into public."RECETAS" (descripcion, dificultad, imagen, nombre, usuario_id, categoria_id, estado)
+values ('Pollo rico rico', 1, 'una url', 'Pollo Frito', 1, 1, 'ALTA');

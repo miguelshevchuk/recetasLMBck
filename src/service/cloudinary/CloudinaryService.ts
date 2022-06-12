@@ -14,19 +14,19 @@ export class CloudinaryService {
     configCloudinary()
   }
 
-  public async uploadReel(imagen: string): Promise<string> {
+  public async uploadImage(imagen: string): Promise<string> {
 
 //deprecated
 
     try {
-      const reelUpload = await v2.uploader.upload(this.baseFile+"images.png", {
-        folder: "imagen",
+      const reelUpload = await v2.uploader.upload(imagen, {
+        folder: "recetas",
         unique_filename: true,
         use_filename: true,
         access_mode: 'public',
       })
-      const reelUrl = reelUpload.url
-      return reelUrl
+      const imageUrl = reelUpload.url
+      return imageUrl
     } catch (e) {
       console.log(e)
       throw new CloudinaryError()

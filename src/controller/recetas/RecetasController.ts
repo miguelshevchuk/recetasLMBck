@@ -4,8 +4,6 @@ import usuarioService from '../../service/usuario/UsuarioService';
 import { ICRUDController } from '../ICRUDController';
 
 class RecetasController implements ICRUDController{
-    update: (req: express.Request, res: express.Response, next: express.NextFunction) => any;
-    delete: (req: express.Request, res: express.Response, next: express.NextFunction) => any;
 
 
     public async getOne (req: express.Request, res: express.Response, next: express.NextFunction) {   
@@ -26,21 +24,43 @@ class RecetasController implements ICRUDController{
         }
     }
 
-    public async getMyRecipes (req: express.Request, res: express.Response, next: express.NextFunction) {   
+    // public async getMyRecipes (req: express.Request, res: express.Response, next: express.NextFunction) {   
+    //     try {
+    //         const userId = (req as any).user.usuarioId
+    //         let recetas = await recetaService.getMyRecipes(userId)
+    //         return res.status(200).send(recetas)   
+    //     } catch (e) {
+    //       next(e)
+    //     }
+    // }
+
+
+    public async create(req: express.Request, res: express.Response, next: express.NextFunction){
         try {
             const userId = (req as any).user.usuarioId
-            let recetas = await recetaService.getMyRecipes(userId)
-            return res.status(200).send(recetas)   
+            await recetaService.create(req.body, userId);
+            return res.status(201).send()   
         } catch (e) {
           next(e)
         }
     }
 
 
-    public async create(req: express.Request, res: express.Response, next: express.NextFunction){
+    public async update(req: express.Request, res: express.Response, next: express.NextFunction){
         try {
-            // await usuarioService.create(req.body);
-            return res.status(201).send()   
+            const userId = (req as any).user.usuarioId
+            await recetaService.updateReceta(req.body, userId);
+            return res.status(200).send()   
+        } catch (e) {
+          next(e)
+        }
+    }
+
+    public async delete(req: express.Request, res: express.Response, next: express.NextFunction){
+        try {
+            const userId = (req as any).user.usuarioId
+            await recetaService.deleteReceta(parseInt(req.params.recetaId), userId);
+            return res.status(200).send()   
         } catch (e) {
           next(e)
         }

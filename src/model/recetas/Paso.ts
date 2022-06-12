@@ -17,6 +17,11 @@ export class Paso {
     pasoId!: number
 
     @Column({
+        name: 'pasoNro'
+    })
+    pasoNro!: number
+
+    @Column({
         name: 'paso'
     })
     paso!: string
@@ -24,5 +29,11 @@ export class Paso {
     @ManyToOne(() => Receta)
     @JoinColumn({name: 'receta_id'})
     receta: Receta;
+
+    constructor(pasoNro, paso, recetaId:number){
+        this.pasoNro = pasoNro
+        this.paso = paso
+        this.receta = new Receta(recetaId)
+    }
  
 }

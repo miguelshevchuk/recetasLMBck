@@ -12,6 +12,9 @@ class RecetasRoutes {
 
     config(): void {
         this.router.get('/:recetaId', recetasController.getOne);
+        this.router.put('/',authenticated,  recetasController.update);
+        this.router.post('/',authenticated,  recetasController.create);
+        this.router.delete('/:recetaId',authenticated,  recetasController.delete);
     }
 
 }

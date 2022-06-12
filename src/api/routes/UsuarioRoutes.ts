@@ -16,6 +16,7 @@ class UsuarioRoutes {
     config(): void {
         this.router.post('/', usuarioController.create);
         this.router.get('/', authenticated, usuarioController.getOne);
+        this.router.put('/password', authenticated, usuarioController.cambiarPass);
     }
 
 }

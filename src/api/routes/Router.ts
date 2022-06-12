@@ -3,6 +3,7 @@ import SesionRoutes from "./SesionRoutes"
 import express from 'express'
 import RecetasRoutes from "./RecetasRoutes";
 import RecetaRoutes from "./RecetaRoutes";
+import CalificacionRoutes from "./CalificacionRoutes";
 
 class Routes {
 
@@ -17,6 +18,7 @@ class Routes {
         this.Router.use('/sesion', SesionRoutes);
         this.Router.use('/recetas', RecetasRoutes);
         this.Router.use('/receta', RecetaRoutes);
+        this.Router.use('/calificacion', CalificacionRoutes);
     }
 
 }

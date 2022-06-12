@@ -1,8 +1,8 @@
 import express from 'express'
-import usuarioService from '../../service/usuario/UsuarioService';
+import calificacionService from '../../service/recetas/CalificacionService';
 import { ICRUDController } from '../ICRUDController';
 
-class UsuarioController implements ICRUDController{
+class CalificacionController implements ICRUDController{
     getAll: (req: express.Request, res: express.Response, next: express.NextFunction) => any;
     update: (req: express.Request, res: express.Response, next: express.NextFunction) => any;
     delete: (req: express.Request, res: express.Response, next: express.NextFunction) => any;
@@ -11,8 +11,8 @@ class UsuarioController implements ICRUDController{
     public async getOne (req: express.Request, res: express.Response, next: express.NextFunction) {   
         try {
             const userId = (req as any).user.usuarioId
-            let usuario = await usuarioService.getUsuario(userId)
-            return res.status(200).send(usuario)   
+            let calificacion = await calificacionService.getCalificacion(parseInt(req.params.recetaId), userId)
+            return res.status(200).send(calificacion)   
         } catch (e) {
           next(e)
         }
@@ -20,17 +20,8 @@ class UsuarioController implements ICRUDController{
 
     public async create(req: express.Request, res: express.Response, next: express.NextFunction){
         try {
-            await usuarioService.create(req.body);
-            return res.status(201).send()   
-        } catch (e) {
-          next(e)
-        }
-    }
-
-    public async cambiarPass(req: express.Request, res: express.Response, next: express.NextFunction){
-        try {
             const userId = (req as any).user.usuarioId
-            await usuarioService.cambiarPass(req.body, userId);
+            await calificacionService.calificar(req.body, userId);
             return res.status(201).send()   
         } catch (e) {
           next(e)
@@ -39,4 +30,4 @@ class UsuarioController implements ICRUDController{
 
 }
 
-export const usuarioController = new UsuarioController();
+export const calificacionController = new CalificacionController();
