@@ -3,12 +3,12 @@ import { Paso } from "../../model/Models"
 
 export class PasoDTO {
 
-    pasoId!: number
-    paso!: string
+    paso!: number
+    descripcion!: string
 
     constructor(paso:Paso){
-        this.pasoId = paso.pasoId
-        this.paso = paso.paso
+        this.paso = paso.pasoNro
+        this.descripcion = paso.paso
     }
  
 }

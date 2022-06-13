@@ -2,12 +2,12 @@ import { Categoria } from "../../model/Models"
 
 export class CategoriaDTO {
 
-    categoriaId!: number
-    categoria!: string
+    id!: number
+    descripcion!: string
 
     constructor(categoria:Categoria){
-        this.categoriaId = categoria.categoriaId
-        this.categoria = categoria.categoria
+        this.id = categoria.categoriaId
+        this.descripcion = categoria.categoria
     }
  
 }
