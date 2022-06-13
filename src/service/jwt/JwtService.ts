@@ -1,16 +1,16 @@
 import jwt from 'jsonwebtoken'
 import crypto from 'crypto'
 import { IJwtUnsigned } from '../../interfaces/jwt/IJwtUnsigned'
-import { IJwtSigned } from '../../interfaces/jwt/IJwtSigned'
 import { JWTSecretError } from '../../error/auth/JWTSecretError'
 import { JWTCreateError } from '../../error/auth/JWTCreateError'
+import { JwtSignedDTO } from '../../dto/usuario/JwtSignedDTO'
 
 
 export const jwtSecret: string | undefined = process.env.JWT_SECRET || 'Me cago en la concha de tu madre'
 const tokenExpirationInSeconds = 86400 // 24 HOURS
 
 class JwtService {
-  createJWT(signObject: IJwtUnsigned): IJwtSigned {
+  createJWT(signObject: IJwtUnsigned): JwtSignedDTO {
     if (!jwtSecret) {
       throw new JWTSecretError();
     }

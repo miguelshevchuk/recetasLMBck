@@ -144,7 +144,7 @@ class RecetaService{
        receta = await recetaRepository.save(receta);
 
        this.guardarIngredientes(nuevaReceta.ingredientes, receta);
-       this.guardarPasos(nuevaReceta.pasos, receta);
+       this.guardarPasos(nuevaReceta.preparacion, receta);
 
     }
 }
