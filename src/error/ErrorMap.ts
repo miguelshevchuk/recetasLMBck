@@ -20,7 +20,7 @@ export const ErrorMap: MapError = {
     USUARIO_INEXISTENTE: new ErrorType("Usuario Invalido", 401),
     RECETA_NO_PROPIA: new ErrorType("No tiene permisos para modificar la receta seleccionada", 401),
     USUARIO_EXISTENTE: new ErrorType("El email ya se encuentra en uso", 400),
-    CLOUDINARY_ERROR: new ErrorType("Ocurrio un error al procesar el reel", 500),
+    CLOUDINARY_ERROR: new ErrorType("Ocurrio un error al subir la imagen", 500),
     NO_EXISTEN_RECETAS: new ErrorType("No existen recetas para la consulta realizada"),
     PARAMETRO_PASOS_VACIO: new ErrorType("Debe agregar al menos un paso"),
     PARAMETRO_INGREDIENTES_VACIO: new ErrorType("Debe agregar al menos un ingrediente"),
