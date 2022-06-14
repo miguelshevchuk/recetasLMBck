@@ -1,11 +1,11 @@
 export interface IUpdateReceta {
-    recetaId: number
+    id: number
     nombre: string
     descripcion: string
     dificultad: number
     categoria: number
     ingredientes: string[]
-    pasos: IPaso[] 
+    preparacion: IPaso[] 
   }
 
   interface IPaso{
