@@ -20,6 +20,7 @@ class RecetaMapper{
 
         nuevaReceta.usuario = new Usuario(userId)
         nuevaReceta.imagen = urlImagen
+        nuevaReceta.estado = "ALTA"
 
         return nuevaReceta
 

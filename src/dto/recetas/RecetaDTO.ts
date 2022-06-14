@@ -6,7 +6,7 @@ import { PasoDTO } from "./PasoDTO"
 
 export class RecetaDTO {
 
-    recetaId!: number
+    id!: number
     nombre!: string
     descripcion!: string
     dificultad!: number
@@ -14,11 +14,11 @@ export class RecetaDTO {
     usuario: UsuarioDTO;
     calificacionPromedio: number = 0;
     categoria: CategoriaDTO;
-    ingredientes!: IngredienteDTO[];  
-    pasos!: PasoDTO[];  
+    ingredientes!: string[];  
+    preparacion!: PasoDTO[];  
 
     constructor(receta:Receta){
-        this.recetaId = receta.recetaId
+        this.id = receta.recetaId
         this.nombre = receta.nombre
         this.descripcion = receta.descripcion
         this.dificultad = receta.dificultad
@@ -32,8 +32,8 @@ export class RecetaDTO {
         }
 
         this.categoria = new CategoriaDTO(receta.categoria)
-        this.ingredientes = receta.ingredientes.map(i => new IngredienteDTO(i))
-        this.pasos = receta.pasos.map(p => new PasoDTO(p))
+        this.ingredientes = receta.ingredientes.map(i => i.ingrediente)
+        this.preparacion = receta.pasos.map(p => new PasoDTO(p))
         this.usuario = new UsuarioDTO(receta.usuario)
     }
 

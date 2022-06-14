@@ -4,7 +4,7 @@ export interface INuevaReceta {
     dificultad: number
     categoria: number
     ingredientes: string[]
-    pasos: IPaso[] 
+    preparacion: IPaso[] 
     imagen:string
   }
 

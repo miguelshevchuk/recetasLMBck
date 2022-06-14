@@ -5,6 +5,7 @@ import { Usuario } from '../../model/Models';
 import { CredencialesInvalidasError } from '../../error/auth/CredencialesInvalidasError';
 import { jwtService } from '../jwt/JwtService';
 import { IJwtUnsigned } from '../../interfaces/jwt/IJwtUnsigned';
+import { LoginResponseDTO } from '../../dto/usuario/LoginResponseDTO';
 
 class SesionService{
  
@@ -21,7 +22,7 @@ class SesionService{
             usuarioId: usuario.usuarioId
         };
 
-        return jwtService.createJWT(signObject);
+        return new LoginResponseDTO(usuario, jwtService.createJWT(signObject)) ;
     }
 
 
