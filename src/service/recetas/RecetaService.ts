@@ -57,23 +57,22 @@ class RecetaService{
             throw new ParametrosRecetaInvalidos(ErrorMap.PARAMETRO_INGREDIENTES_VACIO);
         }
 
-        if(!receta.pasos){
+        if(!receta.preparacion){
             throw new ParametrosRecetaInvalidos(ErrorMap.PARAMETRO_PASOS_VACIO);
         }
 
         let recetasRepository = getRepository(Receta);
         let recetaBD = await recetasRepository.createQueryBuilder('r')
             .innerJoinAndSelect('r.usuario', 'u')
-            .where("r.recetaId = :recetaId", {recetaId : receta.recetaId})
+            .where("r.recetaId = :recetaId", {recetaId : receta.id})
             .andWhere("r.estado = :estadoAlta", {estadoAlta : "ALTA"})
             .getOne()
-
 
         if(recetaBD.usuario.usuarioId != userId){
             throw new RecetaNoPropiaException()
         }
         
-        await recetasRepository.update({recetaId: receta.recetaId}, {
+        await recetasRepository.update({recetaId: receta.id}, {
             nombre : receta.nombre,
             descripcion : receta.descripcion,
             dificultad : receta.dificultad,
@@ -82,7 +81,7 @@ class RecetaService{
 
         this.guardarIngredientes(receta.ingredientes, recetaBD);
 
-        this.guardarPasos(receta.pasos, recetaBD);
+        this.guardarPasos(receta.preparacion, recetaBD);
        
 
 
