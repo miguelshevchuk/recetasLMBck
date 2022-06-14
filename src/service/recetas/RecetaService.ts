@@ -79,9 +79,9 @@ class RecetaService{
             categoria: {categoriaId: receta.categoria}
         })
 
-        this.guardarIngredientes(receta.ingredientes, recetaBD);
+        await this.guardarIngredientes(receta.ingredientes, recetaBD);
 
-        this.guardarPasos(receta.preparacion, recetaBD);
+        await this.guardarPasos(receta.preparacion, recetaBD);
        
 
 
@@ -113,23 +113,23 @@ class RecetaService{
     }
 
 
-    private guardarPasos(pasos: {pasoNro, paso}[], recetaBD: Receta) {
+    private async guardarPasos(pasos: {pasoNro, paso}[], recetaBD: Receta) {
         let pasosRepository = getRepository(Paso);
         pasosRepository.delete({ receta: { recetaId: recetaBD.recetaId } });
 
         for (let i = 0; i < pasos.length; i++) {
             let paso = new Paso(pasos[i].pasoNro, pasos[i].paso, recetaBD.recetaId);
-            pasosRepository.save(paso);
+            await pasosRepository.save(paso);
         }
     }
 
-    private guardarIngredientes(ingredientes: string[], recetaBD: Receta) {
+    private async guardarIngredientes(ingredientes: string[], recetaBD: Receta) {
         let ingredientesRepository = getRepository(Ingrediente);
         ingredientesRepository.delete({ receta: { recetaId: recetaBD.recetaId } });
 
         for (let i = 0; i < ingredientes.length; i++) {
             let ingrediente = new Ingrediente(ingredientes[i], recetaBD.recetaId);
-            ingredientesRepository.save(ingrediente);
+            await ingredientesRepository.save(ingrediente);
         }
     }
 
@@ -142,8 +142,8 @@ class RecetaService{
 
        receta = await recetaRepository.save(receta);
 
-       this.guardarIngredientes(nuevaReceta.ingredientes, receta);
-       this.guardarPasos(nuevaReceta.preparacion, receta);
+       await this.guardarIngredientes(nuevaReceta.ingredientes, receta);
+       await this.guardarPasos(nuevaReceta.preparacion, receta);
 
     }
 }
