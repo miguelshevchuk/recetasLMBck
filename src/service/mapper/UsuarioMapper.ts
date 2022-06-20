@@ -8,7 +8,8 @@ class UsuarioMapper{
     private defNuevoUsuarioMapper = {
         "password": "password",
         "email": "email",
-        "nombreApellido": "nombreApellido"
+        "nombreApellido": "nombreApellido",
+        "telefono": "telefono"        
       };
 
     public mapNuevoUsuario : (nuevoUsuario:INuevoUsuario) => Usuario = function(nuevoUsuario){
