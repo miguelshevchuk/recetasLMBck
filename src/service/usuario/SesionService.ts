@@ -6,15 +6,21 @@ import { CredencialesInvalidasError } from '../../error/auth/CredencialesInvalid
 import { jwtService } from '../jwt/JwtService';
 import { IJwtUnsigned } from '../../interfaces/jwt/IJwtUnsigned';
 import { LoginResponseDTO } from '../../dto/usuario/LoginResponseDTO';
+import bcrypt from 'bcryptjs'
 
 class SesionService{
  
 
     public async login(login:ILogin){
         let usuarioRepository = getRepository(Usuario);
-        const usuario= await usuarioRepository.findOne({email: login.usuario, password: login.password});
+        console.log(bcrypt.hashSync(login.password, 8))
+        const usuario= await usuarioRepository.findOne({email: login.usuario});
 
         if (!usuario) {
+            throw new CredencialesInvalidasError()
+        }
+
+        if(!bcrypt.compare(login.password, usuario.password)){
             throw new CredencialesInvalidasError()
         }
 
