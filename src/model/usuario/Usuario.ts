@@ -32,6 +32,11 @@ export class Usuario {
     })
     nombreApellido!: string
 
+    @Column({
+        name: 'telefono'
+    })
+    telefono!: string
+
     constructor(usuarioId:number){
         this.usuarioId = usuarioId
     }
