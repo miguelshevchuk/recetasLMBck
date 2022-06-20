@@ -8,6 +8,7 @@ import { Usuario} from '../../model/Models';
 import { UsuarioDTO } from '../../dto/usuario/UsuarioDTO';
 import { ICambiarPass } from '../../interfaces/usuario/ICambiarPass';
 import { CredencialesInvalidasError } from '../../error/auth/CredencialesInvalidasError';
+import bcrypt from 'bcryptjs'
 
 class UsuarioService{
  
@@ -46,13 +47,17 @@ class UsuarioService{
     public async cambiarPass(cambiarPass:ICambiarPass, userId:number){
 
         let usuarioRepository = getRepository(Usuario);
-        const usuario= await usuarioRepository.findOne({usuarioId: userId, password: cambiarPass.oldPassword});
+        const usuario= await usuarioRepository.findOne({usuarioId: userId});
 
         if (!usuario) {
             throw new CredencialesInvalidasError()
         }
 
-        await usuarioRepository.update({usuarioId: userId}, {password: cambiarPass.newPassword})
+        if(!bcrypt.compare(cambiarPass.oldPassword, usuario.password)){
+            throw new CredencialesInvalidasError()
+        }
+
+        await usuarioRepository.update({usuarioId: userId}, {password: bcrypt.hashSync(cambiarPass.newPassword, 8)})
     }
 
 

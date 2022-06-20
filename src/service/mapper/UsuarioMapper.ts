@@ -1,5 +1,6 @@
 import { INuevoUsuario } from "../../interfaces/usuario/INuevoUsuario";
 import { Usuario} from "../../model/Models";
+import bcrypt from 'bcryptjs'
 
 var objectMapper = require('object-mapper');
 
@@ -13,6 +14,8 @@ class UsuarioMapper{
       };
 
     public mapNuevoUsuario : (nuevoUsuario:INuevoUsuario) => Usuario = function(nuevoUsuario){
+        
+        nuevoUsuario.password = bcrypt.hashSync(nuevoUsuario.password, 8)
 
         return Object.assign(new Usuario(null), objectMapper(nuevoUsuario, this.defNuevoUsuarioMapper));
 
