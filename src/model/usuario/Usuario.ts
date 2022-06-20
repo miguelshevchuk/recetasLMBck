@@ -33,7 +33,8 @@ export class Usuario {
     nombreApellido!: string
 
     @Column({
-        name: 'telefono'
+        name: 'telefono',
+        nullable: true
     })
     telefono!: string
 
