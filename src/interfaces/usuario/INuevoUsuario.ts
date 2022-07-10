@@ -4,5 +4,7 @@ export interface INuevoUsuario {
     email: string
     nombreApellido:string
     telefono:string
+    preguntaSecreta: string
+    respuestaSecreta: string
  
 }

@@ -9,6 +9,8 @@ import { UsuarioDTO } from '../../dto/usuario/UsuarioDTO';
 import { ICambiarPass } from '../../interfaces/usuario/ICambiarPass';
 import { CredencialesInvalidasError } from '../../error/auth/CredencialesInvalidasError';
 import bcrypt from 'bcryptjs'
+import { PreguntaSecretaDTO } from '../../dto/usuario/PreguntaSecretaDTO';
+import { IRecuperoClave } from '../../interfaces/usuario/IRecuperoClave';
 
 class UsuarioService{
  
@@ -60,6 +62,33 @@ class UsuarioService{
         await usuarioRepository.update({usuarioId: userId}, {password: bcrypt.hashSync(cambiarPass.newPassword, 8)})
     }
 
+    public async getPreguntaSecreta(email:string){
+
+        let usuarioRepository = getRepository(Usuario);
+        const usuario= await usuarioRepository.findOne({email: email});
+
+        if (!usuario) {
+            throw new CredencialesInvalidasError()
+        }
+
+        return new PreguntaSecretaDTO(usuario)
+    }
+
+    public async recuperarClave(recuperoClave:IRecuperoClave){
+
+        let usuarioRepository = getRepository(Usuario);
+        const usuario= await usuarioRepository.findOne({usuarioId: recuperoClave.usuarioId});
+
+        if (!usuario) {
+            throw new CredencialesInvalidasError()
+        }
+
+        if (usuario.respuestaSecreta.toLowerCase() != recuperoClave.respuestaSecreta.toLowerCase()) {
+            throw new CredencialesInvalidasError()
+        }
+        
+        await usuarioRepository.update({usuarioId: recuperoClave.usuarioId}, {password: bcrypt.hashSync(recuperoClave.newPassword, 8)})
+    }
 
 }
 

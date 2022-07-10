@@ -37,6 +37,24 @@ class UsuarioController implements ICRUDController{
         }
     }
 
+    public async getPreguntaSecreta(req: express.Request, res: express.Response, next: express.NextFunction){
+        try {
+            let pregunta = await usuarioService.getPreguntaSecreta(req.body.email);
+            return res.status(200).send(pregunta)   
+        } catch (e) {
+          next(e)
+        }
+    }
+
+    public async recuperarClave(req: express.Request, res: express.Response, next: express.NextFunction){
+        try {
+            await usuarioService.recuperarClave(req.body);
+            return res.status(201).send()   
+        } catch (e) {
+          next(e)
+        }
+    }
+
 }
 
 export const usuarioController = new UsuarioController();
