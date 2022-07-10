@@ -17,6 +17,8 @@ class UsuarioRoutes {
         this.router.post('/', usuarioController.create);
         this.router.get('/', authenticated, usuarioController.getOne);
         this.router.put('/password', authenticated, usuarioController.cambiarPass);
+        this.router.put('/password/recupero', usuarioController.recuperarClave);
+        this.router.post('/pregunta', usuarioController.getPreguntaSecreta);
     }
 
 }

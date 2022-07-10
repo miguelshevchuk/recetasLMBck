@@ -37,6 +37,16 @@ export class Usuario {
     })
     telefono!: string
 
+    @Column({
+        name: 'pregunta_secreta'
+    })
+    preguntaSecreta!: string
+
+    @Column({
+        name: 'respuesta_secreta'
+    })
+    respuestaSecreta!: string
+
     constructor(usuarioId:number){
         this.usuarioId = usuarioId
     }
