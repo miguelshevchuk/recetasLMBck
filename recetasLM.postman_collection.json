@@ -7,230 +7,391 @@
 	},
 	"item": [
 		{
-			"name": "usuario",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"email\": \"hola@gmail.com\",\r\n    \"password\": \"aguanteRiver\",\r\n    \"nombreApellido\": \"Miguel Shevchuk\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{URL}}/usuario/",
-					"host": [
-						"{{URL}}"
-					],
-					"path": [
-						"usuario",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "usuario",
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvSWQiOjEsImlhdCI6MTYzOTIzMjg0MywiZXhwIjoxNjM5MzE5MjQzfQ.X9wHmDbRJ85KbKe3CVE1OfWZz_XUU1sza9ngVmXKkoU",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "{{URL}}/usuario/",
-					"host": [
-						"{{URL}}"
-					],
-					"path": [
-						"usuario",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "receta",
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvSWQiOjEsImlhdCI6MTYzOTIzMjg0MywiZXhwIjoxNjM5MzE5MjQzfQ.X9wHmDbRJ85KbKe3CVE1OfWZz_XUU1sza9ngVmXKkoU",
-						"type": "text",
-						"disabled": true
-					}
-				],
-				"url": {
-					"raw": "{{URL}}/receta/1",
-					"host": [
-						"{{URL}}"
-					],
-					"path": [
-						"receta",
-						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "receta",
-			"request": {
-				"method": "DELETE",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvSWQiOjEsImlhdCI6MTYzOTIzMjg0MywiZXhwIjoxNjM5MzE5MjQzfQ.X9wHmDbRJ85KbKe3CVE1OfWZz_XUU1sza9ngVmXKkoU",
-						"type": "text",
-						"disabled": true
-					}
-				],
-				"url": {
-					"raw": "{{URL}}/receta/1",
-					"host": [
-						"{{URL}}"
-					],
-					"path": [
-						"receta",
-						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "receta",
-			"request": {
-				"method": "PUT",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvSWQiOjEsImlhdCI6MTYzOTIzMjg0MywiZXhwIjoxNjM5MzE5MjQzfQ.X9wHmDbRJ85KbKe3CVE1OfWZz_XUU1sza9ngVmXKkoU",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n        \"recetaId\": 1,\r\n        \"nombre\": \"Pollo Frito\",\r\n        \"descripcion\": \"Pollo rico rico\",\r\n        \"dificultad\": 1,\r\n        \"categoria\": 1,\r\n        \"ingredientes\": [\"1 papa\", \"3 Cebollas\"],\r\n        \"pasos\": [\r\n            {\r\n                \"pasoNro\": 1,\r\n                \"paso\": \"Pelar el pollo\"\r\n            },\r\n            {\r\n                \"pasoNro\": 2,\r\n                \"paso\": \"Ponerlo en el horno\"\r\n            }\r\n        ]\r\n    }",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{URL}}/receta",
-					"host": [
-						"{{URL}}"
-					],
-					"path": [
-						"receta"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "recetas",
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvSWQiOjEsImlhdCI6MTYzOTIzMjg0MywiZXhwIjoxNjM5MzE5MjQzfQ.X9wHmDbRJ85KbKe3CVE1OfWZz_XUU1sza9ngVmXKkoU",
-						"type": "text",
-						"disabled": true
-					}
-				],
-				"url": {
-					"raw": "{{URL}}/recetas",
-					"host": [
-						"{{URL}}"
-					],
-					"path": [
-						"recetas"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Mis Recetas",
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvSWQiOjEsImlhdCI6MTY1Mzg1NjQzMCwiZXhwIjoxNjUzOTQyODMwfQ.Cjq_gao3e1zI4zU1s0MrYMmlHo-xkE5yT6bnQz2_mC8",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "{{URL}}/recetas/me",
-					"host": [
-						"{{URL}}"
-					],
-					"path": [
-						"recetas",
-						"me"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "login",
-			"event": [
+			"name": "Usuario",
+			"item": [
 				{
-					"listen": "prerequest",
-					"script": {
-						"exec": [
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"usuario\":\"hola@gmail.com\",\r\n    \"password\":\"aguanteRiver\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+					"name": "usuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"shevchuk.miguel@gmail.com\",\r\n    \"password\": \"aguanteRiver\",\r\n    \"nombreApellido\": \"Miguel Shevchuk\",\r\n    \"telefono\":\"1112326585\",\r\n    \"preguntaSecreta\": \"Cual es el club mas grande de la Argentina?\",\r\n    \"respuestaSecreta\": \"Club Atletico River Plate\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/usuario/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"usuario",
+								""
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "{{URL}}/sesion/",
-					"host": [
-						"{{URL}}"
-					],
-					"path": [
-						"sesion",
-						""
-					],
-					"query": [
-						{
-							"key": "usuario",
-							"value": "migue",
-							"disabled": true
+				{
+					"name": "usuario",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvSWQiOjEsImlhdCI6MTY1NTA4OTI3NiwiZXhwIjoxNjU1MTc1Njc2fQ.0IGEGZePFee0ak2SkgGvR3aewbFhYJFPmB79jTbA9OQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/usuario/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"usuario",
+								""
+							]
 						}
-					]
+					},
+					"response": []
+				},
+				{
+					"name": "preguntaSecreta",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"shevchuk.miguel@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/usuario/pregunta",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"usuario",
+								"pregunta"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Recuperar Clave",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"respuestaSecreta\": \"River Plate\",\r\n    \"newPassword\": \"aguanteRiver\",\r\n    \"usuarioId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/usuario/password/recupero",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"usuario",
+								"password",
+								"recupero"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cambio Clave",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "asdasdasd",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"oldPassword\": \"\",\r\n    \"newPassword\": \"aguanteRiver\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/usuario/password",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"usuario",
+								"password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"usuario\":\"shevchuk.miguell@gmail.com\",\r\n    \"password\":\"aguanteRiver\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/sesion/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"sesion",
+								""
+							],
+							"query": [
+								{
+									"key": "usuario",
+									"value": "migue",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
+		},
+		{
+			"name": "Recetas",
+			"item": [
+				{
+					"name": "receta",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvSWQiOjEsImlhdCI6MTYzOTIzMjg0MywiZXhwIjoxNjM5MzE5MjQzfQ.X9wHmDbRJ85KbKe3CVE1OfWZz_XUU1sza9ngVmXKkoU",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/receta/1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"receta",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "calificacion",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvSWQiOjEsImlhdCI6MTYzOTIzMjg0MywiZXhwIjoxNjM5MzE5MjQzfQ.X9wHmDbRJ85KbKe3CVE1OfWZz_XUU1sza9ngVmXKkoU",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/calificacion/1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"calificacion",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "calificacion",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvSWQiOjEsImlhdCI6MTYzOTIzMjg0MywiZXhwIjoxNjM5MzE5MjQzfQ.X9wHmDbRJ85KbKe3CVE1OfWZz_XUU1sza9ngVmXKkoU",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"recetaId\": 1,\r\n    \"calificacion\": 5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/calificacion",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"calificacion"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "receta",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvSWQiOjEsImlhdCI6MTY1NDM4MjQxMywiZXhwIjoxNjU0NDY4ODEzfQ.OpCEcFwxvBABD_uy-EAr9Vj02afsJNJp0jcl0Ucwiog",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/receta/1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"receta",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "receta",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvSWQiOjEsImlhdCI6MTY1NDM4MjQxMywiZXhwIjoxNjU0NDY4ODEzfQ.OpCEcFwxvBABD_uy-EAr9Vj02afsJNJp0jcl0Ucwiog",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"recetaId\": 1,\r\n        \"nombre\": \"Pollo Frito\",\r\n        \"descripcion\": \"Pollo rico rico\",\r\n        \"dificultad\": 1,\r\n        \"categoria\": 2,\r\n        \"ingredientes\": [\"1 papa\", \"3 Cebollas\"],\r\n        \"pasos\": [\r\n            {\r\n                \"pasoNro\": 1,\r\n                \"paso\": \"Pelar el pollo\"\r\n            },\r\n            {\r\n                \"pasoNro\": 2,\r\n                \"paso\": \"Ponerlo en el horno\"\r\n            }\r\n        ]\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/receta",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"receta"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "receta",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvSWQiOjEsImlhdCI6MTYzOTIzMjg0MywiZXhwIjoxNjM5MzE5MjQzfQ.X9wHmDbRJ85KbKe3CVE1OfWZz_XUU1sza9ngVmXKkoU",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"recetaId\": 1,\r\n        \"nombre\": \"Pollo Frito\",\r\n        \"descripcion\": \"Pollo rico rico\",\r\n        \"dificultad\": 1,\r\n        \"categoria\": 1,\r\n        \"ingredientes\": [\"1 papa\", \"3 Cebollas\"],\r\n        \"pasos\": [\r\n            {\r\n                \"pasoNro\": 1,\r\n                \"paso\": \"Pelar el pollo\"\r\n            },\r\n            {\r\n                \"pasoNro\": 2,\r\n                \"paso\": \"Ponerlo en el horno\"\r\n            }\r\n        ]\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/receta",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"receta"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "recetas",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvSWQiOjEsImlhdCI6MTYzOTIzMjg0MywiZXhwIjoxNjM5MzE5MjQzfQ.X9wHmDbRJ85KbKe3CVE1OfWZz_XUU1sza9ngVmXKkoU",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/recetas",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"recetas"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	],
 	"variable": [
